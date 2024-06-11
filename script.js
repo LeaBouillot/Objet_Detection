@@ -31,14 +31,28 @@ inputImage.addEventListener('change', () => {
         img.src = reader.result; //stocker le resultat du chargement dans la src de img
         //charger image
         img.addEventListener('load', async () => {
-
-        });
+            canvas.height = img.height;
+            canvas.width = img.width;
+            // deput de img au pont 0 0 :c'est une position du canvas
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
             
-        });
-    });
+            //faire la prediction
+            //charge le model de cocoSsd, detection d'objet avec await
+            const model = await cocoSsd.load();
+            //detection d'objet dans le canvas: avec model.detect(canvas)
+            const predictions = await model.detect(canvas);
+            //console.log(predictions);
+            //afficher les predictions sur le canvas
+            predictions.forEach(prediction => {
 
 
-})
+             })
+        })
+        })
+    })
+
+
+
     
 
 
