@@ -6,7 +6,14 @@
     <title>Object Detection</title>
 </head>
 <body>
+<input type="file" name="image" id="image" accept="image/*">
+<canvas id="canvas"></canvas>
+
+ <!-- Load TensorFlow.js. This is required to use coco-ssd model. -->
+ <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
+ <!-- Load the coco-ssd model. -->
+ <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"> </script>
     
-<script src="./script.js"></script>
+<script src="./script.js" type="module"></script>
 </body>
 </html>
