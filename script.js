@@ -1,22 +1,8 @@
-/* PROJET CANVAS
-
-Creer un input de type file en HTML
-
-Lors du changement de cet input, avec FileReader, afficher cette image dans un canvas sur votre HTML
-
-Ensuite, utiliser le canvas avec TensorFlow pour detecter les objets dans l'image :
-https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd
-
-Le model coco-ssd va permettre de faire des predictions sur la présence d'objets sur l'image et donner leurs positions
-
-https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D
-https://developer.mozilla.org/fr/docs/Web/API/CanvasRenderingContext2D/drawImage
-*/
-
 // Recuperer le fichier de l'input et le fichier
 const inputImage = document.getElementById("image");
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
+const img = new Image(); //create new image HTML element, comme document.createElement("img")
 
 // récupérer l'image de l'input de type file en javascript grace a un addEventListener('change')
 inputImage.addEventListener("change", () => {
@@ -52,7 +38,7 @@ inputImage.addEventListener("change", () => {
         ctx.fillText(
           `${predictions.class}`,
           prediction.bbox[0],
-          prediction.bbox[1]); //2 position texte
+          prediction.bbox[1]); //2 positions texte
       })
     })
   })
